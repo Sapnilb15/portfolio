@@ -6,7 +6,7 @@ const sans = Geist({ variable: '--font-sans', subsets: ['latin'] });
 const display = Instrument_Serif({ variable: '--font-display', subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
-  title: 'Sapnil Basnet — AI & Software Developer',
+  title: 'Sapnil Basnet | Software Engineer',
   description: 'Portfolio of Sapnil Basnet, a computer science student building thoughtful AI products and trustworthy software.',
 };
 
