@@ -49,7 +49,7 @@ const dockApps: IconDef[] = [
   { label: 'Mail', color: 'linear-gradient(160deg,#5ac8fa,#1a7cf5)', icon: <Mail />, href: `mailto:${links.email}` },
   { label: 'Contact', color: 'linear-gradient(160deg,#6ee27a,#28c840)', icon: <MessageCircle />, app: 'contact' },
   { label: 'Résumé', color: 'linear-gradient(160deg,#ff6b6b,#e0243a)', icon: <FileText />, app: 'resume' },
-  { label: 'Classic', color: 'linear-gradient(160deg,#ffffff,#dfe7f1)', icon: <Compass className="ios-safari" />, href: '/' },
+  { label: 'Classic', color: 'linear-gradient(160deg,#ffffff,#dfe7f1)', icon: <Compass className="ios-safari" />, href: '/classic' },
 ];
 
 const appTitles: Record<AppId, string> = {
@@ -364,7 +364,7 @@ export default function IosPhone() {
         <h1>Sapnil Basnet</h1>
         <p>A computer science student and developer turning complex systems into useful, trustworthy tools.</p>
         <p className="ios-side-hint">{locked ? 'Swipe up or click the lock screen to unlock.' : 'Tap an app to open it. Swipe up on the bar or press Esc to go home.'}</p>
-        <a href="/">Open the classic site <ChevronRight size={16} /></a>
+        <a href="/classic">Open the classic site <ChevronRight size={16} /></a>
       </aside>
 
       <div className="ios-device" style={{ '--scale': scale } as CSSProperties}>
