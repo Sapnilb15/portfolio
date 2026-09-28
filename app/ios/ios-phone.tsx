@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 import { experience, links, projects, skills } from './data';
 
-type AppId = 'projects' | 'about' | 'experience' | 'skills' | 'resume' | 'contact';
+type AppId = 'projects' | 'about' | 'experience' | 'skills' | 'resume' | 'contact' | 'safari';
 
 type IconDef = { label: string; color: string; icon: ReactNode; app?: AppId; href?: string; external?: boolean };
 
@@ -49,7 +49,7 @@ const dockApps: IconDef[] = [
   { label: 'Mail', color: 'linear-gradient(160deg,#5ac8fa,#1a7cf5)', icon: <Mail />, href: `mailto:${links.email}` },
   { label: 'Contact', color: 'linear-gradient(160deg,#6ee27a,#28c840)', icon: <MessageCircle />, app: 'contact' },
   { label: 'Résumé', color: 'linear-gradient(160deg,#ff6b6b,#e0243a)', icon: <FileText />, app: 'resume' },
-  { label: 'Classic', color: 'linear-gradient(160deg,#ffffff,#dfe7f1)', icon: <Compass className="ios-safari" />, href: '/classic' },
+  { label: 'Safari', color: 'linear-gradient(160deg,#ffffff,#dfe7f1)', icon: <Compass className="ios-safari" />, app: 'safari' },
 ];
 
 const appTitles: Record<AppId, string> = {
@@ -59,6 +59,7 @@ const appTitles: Record<AppId, string> = {
   skills: 'Skills',
   resume: 'Résumé',
   contact: 'Contact',
+  safari: 'Safari',
 };
 
 const subscribeMinute = (onChange: () => void) => {
@@ -285,6 +286,21 @@ function ContactApp() {
   );
 }
 
+function SafariApp() {
+  return (
+    <div className="ios-page ios-safari-page">
+      <div className="ios-safari-url"><Lock size={13} strokeWidth={2.6} />sapnilbas.net</div>
+      <div className="ios-safari-hero">
+        <p className="ios-safari-kicker">Portfolio · iOS edition</p>
+        <h1>Sapnil Basnet</h1>
+        <p>A computer science student and developer turning complex systems into useful, trustworthy tools.</p>
+        <p className="ios-safari-hint">Tap an app to open it. Swipe up on the bar or press Esc to go home.</p>
+        <a href="/classic">Open the classic site <ChevronRight size={16} /></a>
+      </div>
+    </div>
+  );
+}
+
 export default function IosPhone() {
   const { time, date, weekday, day } = useClock();
   const [locked, setLocked] = useState(true);
@@ -354,18 +370,12 @@ export default function IosPhone() {
     : openApp === 'skills' ? <SkillsApp />
     : openApp === 'resume' ? <ResumeApp />
     : openApp === 'contact' ? <ContactApp />
+    : openApp === 'safari' ? <SafariApp />
     : null;
 
   return (
     <div className="ios-root">
       <div className="ios-backdrop" aria-hidden="true" />
-      <aside className="ios-side">
-        <p className="ios-side-kicker">Portfolio · iOS edition</p>
-        <h1>Sapnil Basnet</h1>
-        <p>A computer science student and developer turning complex systems into useful, trustworthy tools.</p>
-        <p className="ios-side-hint">{locked ? 'Swipe up or click the lock screen to unlock.' : 'Tap an app to open it. Swipe up on the bar or press Esc to go home.'}</p>
-        <a href="/classic">Open the classic site <ChevronRight size={16} /></a>
-      </aside>
 
       <div className="ios-device" style={{ '--scale': scale } as CSSProperties}>
         <div className="ios-screen" ref={screenRef}>
